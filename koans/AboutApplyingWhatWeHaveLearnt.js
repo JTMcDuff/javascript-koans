@@ -30,15 +30,18 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(3);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
       var productsICanEat = [];
+  //Should check for containing nuts, then interate over every item in ingredients and return only items that have no mushrooms.
+      productsICanEat = products.chain()
+        .reject(function(pizza)) {return pizza.containsNuts=true}
+        .map(function(pizza) { if (pizza.ingredients.every(ingredient){return ingredient !=== "mushrooms"}) {return pizza}})
+        .value();
 
-      /* solve using filter() & all() / any() */
-
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      expect(productsICanEat.length).toBe(3);
   });
 
   /*********************************************************************************/
